@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">LTMobile_CoffeeShop</string>
+    <string name="l_a_ch_n_nth_c_u_ng_y_u_th_ch_c_a_b_n">Lựa Chọn\nThức Uống Yêu Thích Của Bạn</string>
+    <string name="l_a_ch_n_th_c_u_ng_ny_u_th_ch_c_a_b_n">Lựa Chọn Thức Uống\nYêu Thích Của Bạn</string>
+    <string name="h_t_tinh_ch_n_rang_tinh_t_v_tinh_tu">Hạt tinh chọn - Rang tinh tế - Vị tinh tuý</string>
+    <string name="b_t_u">Bắt Đầu</string>
+    <string name="t_m_ki_m">Tìm kiếm ...</string>
+    <string name="danh_m_c">Danh Mục</string>
+    <string name="s_n_ph_m_c_a_chu_ng">Sản Phẩm Được Ưa Chuộng</string>
+    <string name="t_t_c">Tất Cả</string>
+</resources>

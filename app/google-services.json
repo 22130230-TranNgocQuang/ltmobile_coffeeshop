@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "70975055610",
+    "project_id": "ltmobile-coffeeshop",
+    "storage_bucket": "ltmobile-coffeeshop.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:70975055610:android:b982f64909dffa1c9e4b43",
+        "android_client_info": {
+          "package_name": "com.example.ltmobile_coffeeshop"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA36zSg_gF59dEMvdZo0O0jB29-Yw8xMLk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
