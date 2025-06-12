@@ -8,4 +8,5 @@
     <string name="danh_m_c">Danh Mục</string>
     <string name="s_n_ph_m_c_a_chu_ng">Sản Phẩm Được Ưa Chuộng</string>
     <string name="t_t_c">Tất Cả</string>
+    <string name="qty">Qty.</string>
 </resources>
