@@ -1,4 +1,4 @@
-package com.example.ltmobile_coffeeshop.activity
+package com.example.ltmobile_coffeeshop.Activity
 
 import android.content.Intent
 import android.os.Bundle

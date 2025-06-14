@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "70975055610",
+    "firebase_url": "https://ltmobile-coffeeshop-default-rtdb.firebaseio.com",
     "project_id": "ltmobile-coffeeshop",
     "storage_bucket": "ltmobile-coffeeshop.firebasestorage.app"
   },

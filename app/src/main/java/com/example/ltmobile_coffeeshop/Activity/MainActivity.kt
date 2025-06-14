@@ -1,8 +1,8 @@
-package com.example.ltmobile_coffeeshop.activity
+package com.example.ltmobile_coffeeshop.Activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.LinearLayout
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
@@ -26,6 +26,13 @@ class MainActivity: AppCompatActivity() {
         initBanner()
         initcategory()
         initPopular()
+        initBottomMenu()
+    }
+
+    private fun initBottomMenu() {
+        binding.cartBtn.setOnClickListener{
+            startActivity(Intent(this, CartActivity::class.java))
+        }
     }
 
     private fun initBanner() {
