@@ -1,7 +1,10 @@
 package com.example.ltmobile_coffeeshop.Activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -14,7 +17,8 @@ import com.example.ltmobile_coffeeshop.ViewModel.MainViewModel
 import com.example.ltmobile_coffeeshop.databinding.ActivityDetailBinding
 import com.example.ltmobile_coffeeshop.databinding.ActivityItemsListBinding
 
-class ItemsListActivity : AppCompatActivity() {
+class
+ItemsListActivity : AppCompatActivity() {
     lateinit var binding: ActivityItemsListBinding
     private val viewModel = MainViewModel()
     private var id:String=""
@@ -26,9 +30,11 @@ class ItemsListActivity : AppCompatActivity() {
         binding = ActivityItemsListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        getBundle()
-        initList()
-    }
+            getBundle()
+            initList()
+        }
+        
+
 
     private fun initList() {
         binding.apply {
@@ -51,3 +57,4 @@ class ItemsListActivity : AppCompatActivity() {
         binding.categoryTxt.text = title
     }
 }
+
