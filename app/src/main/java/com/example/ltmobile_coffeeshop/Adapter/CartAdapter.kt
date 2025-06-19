@@ -12,6 +12,8 @@ import com.example.ltmobile_coffeeshop.databinding.ViewholderCartBinding
 import com.example.ltmobile_coffeeshop.domain.ItemsModel
 import com.example.project1762.Helper.ManagmentCart
 import com.uilover.project195.Helper.ChangeNumberItemsListener
+import java.text.NumberFormat
+import java.util.Locale
 
 class CartAdapter
     (
@@ -19,10 +21,11 @@ class CartAdapter
     context: Context,
     var changeNumberItemsListener: ChangeNumberItemsListener? = null
 ) : RecyclerView.Adapter<CartAdapter.Viewholder>() {
+
     class Viewholder(val binding: ViewholderCartBinding) : RecyclerView.ViewHolder(binding.root)
 
     private val managmentCart = ManagmentCart(context)
-
+    private val currencyFormatter = NumberFormat.getCurrencyInstance(Locale("vi", "VN"))
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartAdapter.Viewholder {
         val binding =
@@ -34,8 +37,8 @@ class CartAdapter
         val item = listItemSelected[position]
 
         holder.binding.titleTxt.text = item.title
-        holder.binding.feeEachItem.text = "${item.price}vnđ"
-        holder.binding.totalEachItem.text = "${Math.round(item.numberInCart * item.price)}vnđ"
+        holder.binding.feeEachItem.text = currencyFormatter.format(item.price)
+        holder.binding.totalEachItem.text = currencyFormatter.format(item.numberInCart * item.price)
         holder.binding.numberItemTxt.text = item.numberInCart.toString()
 
         Glide.with(holder.itemView.context)

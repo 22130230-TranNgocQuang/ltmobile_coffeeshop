@@ -318,6 +318,6 @@
                         android:textSize="10sp" />
                 </LinearLayout>
             </LinearLayout>
-        </com.google.android.material.bottomnavigation.BottomNavigationView> <!-- ✅ đúng tên class -->
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

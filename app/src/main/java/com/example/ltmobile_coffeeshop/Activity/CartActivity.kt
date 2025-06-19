@@ -14,6 +14,8 @@ import com.example.ltmobile_coffeeshop.databinding.ActivityCartBinding
 import com.example.ltmobile_coffeeshop.databinding.ViewholderCartBinding
 import com.example.project1762.Helper.ManagmentCart
 import com.uilover.project195.Helper.ChangeNumberItemsListener
+import java.text.NumberFormat
+import java.util.Locale
 
 class CartActivity : AppCompatActivity() {
     lateinit var binding: ActivityCartBinding
@@ -73,15 +75,20 @@ class CartActivity : AppCompatActivity() {
 
     private fun calculateCart() {
         val percentTax = 0.02
-        val delivery = 15
-        tax = Math.round((managmentCart.getTotalFee()*percentTax)*100)/100.0
-        val total = Math.round((managmentCart.getTotalFee()+tax+delivery)*100)/100
-        val itemTotal = Math.round(managmentCart.getTotalFee()*100)/100
+        val delivery = 15000
+        val rawSubtotal = managmentCart.getTotalFee()
+
+        tax = (rawSubtotal * percentTax)
+        val total = rawSubtotal + tax + delivery
+        val itemTotal = rawSubtotal
+
+        val formatter = NumberFormat.getCurrencyInstance(Locale("vi", "VN"))
+
         binding.apply {
-            totalFeeTxt.text = "${itemTotal}vnđ"
-            taxTxt.text = "${tax}vnđ"
-            deliveryTxt.text = "${delivery}vnđ"
-            totalTxt.text = "${total}vnđ"
+            totalFeeTxt.text = formatter.format(itemTotal)
+            taxTxt.text = formatter.format(tax)
+            deliveryTxt.text = formatter.format(delivery)
+            totalTxt.text = formatter.format(total)
         }
     }
 }

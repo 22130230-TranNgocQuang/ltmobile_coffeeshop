@@ -9,6 +9,8 @@ import com.example.ltmobile_coffeeshop.R
 import com.example.ltmobile_coffeeshop.databinding.ActivityDetailBinding
 import com.example.ltmobile_coffeeshop.domain.ItemsModel
 import com.example.project1762.Helper.ManagmentCart
+import java.text.NumberFormat
+import java.util.Locale
 
 class DetailActivity : AppCompatActivity() {
     lateinit var binding: ActivityDetailBinding
@@ -58,7 +60,10 @@ class DetailActivity : AppCompatActivity() {
 
             titleTxt.text = item.title
             descriptionTxt.text = item.description
-            priceTxt.text = "${item.price} vnđ"
+
+            val formatter = NumberFormat.getCurrencyInstance(Locale("vi", "VN"))
+            priceTxt.text = formatter.format(item.price)
+
             ratingTxt.text = item.rating.toString()
 
             addToCartBtn.setOnClickListener {
@@ -73,14 +78,19 @@ class DetailActivity : AppCompatActivity() {
             }
 
             plusCart.setOnClickListener {
-                numberItemTxt.text = (item.numberInCart + 1).toString()
+//                numberItemTxt.text = (item.numberInCart + 1).toString()
+//                item.numberInCart++
+
                 item.numberInCart++
+                numberItemTxt.text = item.numberInCart.toString()
             }
 
             minusCart.setOnClickListener {
-                if (item.numberInCart > 0) {
-                    numberItemTxt.text = (item.numberInCart - 1).toString()
+                if (item.numberInCart > 1) {
+//                    numberItemTxt.text = (item.numberInCart - 1).toString()
+//                    item.numberInCart--
                     item.numberInCart--
+                    numberItemTxt.text = item.numberInCart.toString()
                 }
             }
         }

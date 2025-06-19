@@ -9,11 +9,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ltmobile_coffeeshop.Adapter.MyOrderAdapter
 import com.example.ltmobile_coffeeshop.databinding.ActivityOrderBinding
 import com.example.project1762.Helper.ManagmentCart
+import java.text.NumberFormat
+import java.util.Locale
 
 class MyOrderActivity : AppCompatActivity() {
     private lateinit var binding: ActivityOrderBinding
     private lateinit var managerCart: ManagmentCart
     private lateinit var adapterOrder: MyOrderAdapter
+
+    private val currencyFormatter = NumberFormat.getCurrencyInstance(Locale("vi", "VN"))
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,7 +42,14 @@ class MyOrderActivity : AppCompatActivity() {
         val orderStatus = intent.getStringExtra("order_status") ?: "Đang xử lý"
         val itemsCount = intent.getIntExtra("cart_items_count", 0)
 
-        binding.totalOrderTxt.text = "$orderTotal VNĐ"
+        val formattedTotal = try {
+            val amount = orderTotal.filter { it.isDigit() }.toDoubleOrNull() ?: 0.0
+            currencyFormatter.format(amount)
+        } catch (e: Exception) {
+            orderTotal
+        }
+
+        binding.totalOrderTxt.text = formattedTotal
 
         binding.statusOrderTxt.text = orderStatus
         when (orderStatus) {
@@ -84,7 +95,7 @@ class MyOrderActivity : AppCompatActivity() {
         for (item in items) {
             total += item.price * item.numberInCart
         }
-        binding.totalOrderTxt.text = "${Math.round(total)} VNĐ"
+        binding.totalOrderTxt.text = currencyFormatter.format(total)
     }
 
 }

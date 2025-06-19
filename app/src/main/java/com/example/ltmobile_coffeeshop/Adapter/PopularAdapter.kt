@@ -9,6 +9,8 @@ import com.bumptech.glide.Glide
 import com.example.ltmobile_coffeeshop.Activity.DetailActivity
 import com.example.ltmobile_coffeeshop.databinding.ViewholderPopularBinding
 import com.example.ltmobile_coffeeshop.domain.ItemsModel
+import java.text.NumberFormat
+import java.util.Locale
 
 class PopularAdapter(val items:MutableList<ItemsModel>):
     RecyclerView.Adapter<PopularAdapter.Viewholder>( ){
@@ -21,8 +23,16 @@ class PopularAdapter(val items:MutableList<ItemsModel>):
     }
 
     override fun onBindViewHolder(holder: PopularAdapter.Viewholder, position: Int) {
-        holder.binding.titleTxt.text=items[position].title
-        holder.binding.priceTxt.text="$"+items[position].price.toString()
+        val item = items[position]
+
+        holder.binding.titleTxt.text = item.title
+
+        //format giá theo VN
+        val formatVND = NumberFormat.getCurrencyInstance(Locale("vi", "VN"))
+        holder.binding.priceTxt.text = formatVND.format(item.price)
+
+//        holder.binding.titleTxt.text=items[position].title
+//        holder.binding.priceTxt.text=items[position].price.toString()+"vnđ"
 
         Glide.with(context)
             .load(items[position].picUrl[0])

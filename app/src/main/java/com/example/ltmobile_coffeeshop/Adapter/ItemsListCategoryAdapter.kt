@@ -11,6 +11,8 @@ import com.example.ltmobile_coffeeshop.Activity.DetailActivity
 import com.example.ltmobile_coffeeshop.databinding.ViewholderItemPicLeftBinding
 import com.example.ltmobile_coffeeshop.databinding.ViewholderItemPicRightBinding
 import com.example.ltmobile_coffeeshop.domain.ItemsModel
+import java.text.NumberFormat
+import java.util.Locale
 
 class ItemsListCategoryAdapter(val items:MutableList<ItemsModel>)
     :RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -21,6 +23,8 @@ class ItemsListCategoryAdapter(val items:MutableList<ItemsModel>)
         }
 
     lateinit var context: Context
+    private val formatter = NumberFormat.getCurrencyInstance(Locale("vi", "VN"))
+
     override fun getItemViewType(position: Int): Int {
         return if (position%2==0) TYPE_ITEM1 else TYPE_ITEM2
     }
@@ -57,6 +61,7 @@ class ItemsListCategoryAdapter(val items:MutableList<ItemsModel>)
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val item = items[position]
+
         fun bindCommonData(
             titleTxt:String,
             priceTxt:String,
@@ -72,9 +77,10 @@ class ItemsListCategoryAdapter(val items:MutableList<ItemsModel>)
                     Glide.with(context)
                         .load(picUrl)
                         .into(holder.binding.picMain)
+
                     holder.itemView.setOnClickListener {
                         val intent = Intent(context, DetailActivity::class.java)
-                        intent.putExtra("object", items[position])
+                        intent.putExtra("object", item)
                         context.startActivity(intent)
                     }
                 }
@@ -87,17 +93,21 @@ class ItemsListCategoryAdapter(val items:MutableList<ItemsModel>)
                     Glide.with(context)
                         .load(picUrl)
                         .into(holder.binding.picMain)
+
                     holder.itemView.setOnClickListener {
                         val intent = Intent(context, DetailActivity::class.java)
-                        intent.putExtra("object", items[position])
+                        intent.putExtra("object", item)
                         context.startActivity(intent)
                     }
                 }
             }
         }
+
+        val formattedPrice = formatter.format(item.price)
+
         bindCommonData(
             item.title,
-            "${item.price} vnđ",
+            formattedPrice,
             item.rating.toFloat(),
             item.picUrl[0]
         )
