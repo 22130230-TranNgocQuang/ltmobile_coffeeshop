@@ -22,6 +22,10 @@
             android:name=".Activity.DetailActivity"
             android:exported="false" />
         <activity
+                android:name=".Activity.MyOrderActivity"
+                android:exported="false" />
+
+        <activity
             android:name=".Activity.SplashActivity"
             android:exported="true">
             <intent-filter>
